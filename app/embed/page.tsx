@@ -19,7 +19,7 @@ function EmbedContent() {
 
 export default function EmbedPage() {
   return (
-    <div className="flex items-center justify-center w-full h-full min-h-[50px] bg-transparent">
+    <div className="flex items-center justify-center w-full h-full min-h-[50px] bg-white dark:bg-black">
       <Suspense
         fallback={<div className="text-xs text-default-500">Loading...</div>}
       >
