@@ -90,14 +90,14 @@ export default function Home() {
             <ThemeSwitch />
           </div>
           <div className="inline-block max-w-xl text-center justify-center">
-            <h1 className="text-4xl font-bold mb-4">Countdown Generator</h1>
-            <p className="text-lg text-default-600 mb-8">
-              Create horizontal countdown widgets for your website.
-            </p>
-            <Button color="primary" onPress={handleCreate}>
-              Create New Countdown
-            </Button>
-          </div>
+          <h1 className="text-4xl font-bold mb-4">倒數計時產生器</h1>
+          <p className="text-lg text-default-600 mb-8">
+            建立適合嵌入網站的水平倒數小工具。
+          </p>
+          <Button color="primary" onPress={handleCreate}>
+            建立新的倒數
+          </Button>
+        </div>
 
           <div className="flex flex-col gap-6 mt-8 w-full max-w-4xl px-4">
           {countdowns.map((countdown) => (
@@ -127,7 +127,7 @@ export default function Home() {
                     variant="light"
                     onPress={() => handleEdit(countdown)}
                   >
-                    Edit
+                    編輯
                   </Button>
                   <Button
                     color="danger"
@@ -135,7 +135,7 @@ export default function Home() {
                     variant="light"
                     onPress={() => deleteCountdown(countdown.id)}
                   >
-                    Delete
+                    刪除
                   </Button>
                   <Button
                     color="secondary"
@@ -143,7 +143,7 @@ export default function Home() {
                     variant="flat"
                     onPress={() => handleExport(countdown)}
                   >
-                    Export
+                    匯出
                   </Button>
                 </CardFooter>
               </Card>
@@ -156,17 +156,15 @@ export default function Home() {
                 <>
                   <ModalHeader className="flex flex-col gap-1">
                     {exportCode
-                      ? "Export Code"
+                      ? "匯出嵌入碼"
                       : editingCountdown
-                        ? "Edit Countdown"
-                        : "New Countdown"}
+                        ? "編輯倒數"
+                        : "新增倒數"}
                   </ModalHeader>
                   <ModalBody className="max-h-[70vh] overflow-y-auto">
                     {exportCode ? (
                       <div className="flex flex-col gap-4">
-                        <p>
-                          Copy this code to embed the countdown on your site:
-                        </p>
+                        <p>複製這段程式碼嵌入你的網站：</p>
                         <Snippet
                           className="w-full"
                           classNames={{

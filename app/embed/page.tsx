@@ -7,7 +7,7 @@ import { CountdownWidget } from "@/components/CountdownWidget";
 
 function EmbedContent() {
   const searchParams = useSearchParams();
-  const title = searchParams.get("title") || "Countdown";
+  const title = searchParams.get("title") || "倒數計時";
   const targetDate = searchParams.get("date") || new Date().toISOString();
   const theme =
     (searchParams.get("theme") as "light" | "dark" | "colorful" | "custom") ||

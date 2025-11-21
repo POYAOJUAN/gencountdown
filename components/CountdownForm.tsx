@@ -78,43 +78,43 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input
         isRequired
-        label="Card Title"
-        placeholder="Shown on card header"
+        label="卡片標題"
+        placeholder="顯示在卡片左上"
         value={title}
         onValueChange={setTitle}
       />
       <Input
-        label="Widget Title (inside countdown)"
-        placeholder="Shown inside the countdown pill"
+        label="倒數內部標題"
+        placeholder="顯示在倒數膠囊內"
         value={widgetTitle}
         onValueChange={setWidgetTitle}
       />
       <Input
         isRequired
-        label="Target Date"
+        label="目標時間"
         type="datetime-local"
         value={targetDate}
         onValueChange={setTargetDate}
       />
       <Select
-        label="Theme"
+        label="主題"
         selectedKeys={new Set([theme])}
         onSelectionChange={(keys) => {
           const value = Array.from(keys).pop() as Countdown["theme"] | undefined;
           if (value) setTheme(value);
         }}
       >
-        <SelectItem key="light">Light</SelectItem>
-        <SelectItem key="dark">Dark</SelectItem>
-        <SelectItem key="colorful">Colorful</SelectItem>
-        <SelectItem key="custom">Custom</SelectItem>
+        <SelectItem key="light">亮色</SelectItem>
+        <SelectItem key="dark">暗色</SelectItem>
+        <SelectItem key="colorful">漸層</SelectItem>
+        <SelectItem key="custom">自訂</SelectItem>
       </Select>
       {theme === "custom" ? (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="flex flex-col gap-2 rounded-lg border border-default-200/50 p-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Custom background</span>
+                <span className="text-sm font-medium">自訂背景顏色</span>
                 <Switch
                   isSelected={useCustomBackground}
                   onChange={(e) => {
@@ -131,7 +131,7 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
                 />
               </div>
               <Input
-                label="Background Color"
+                label="背景色"
                 type="color"
                 isDisabled={!useCustomBackground}
                 value={
@@ -142,7 +142,7 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
             </div>
             <div className="flex flex-col gap-2 rounded-lg border border-default-200/50 p-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium">Custom text color</span>
+                <span className="text-sm font-medium">自訂文字顏色</span>
                 <Switch
                   isSelected={useCustomTextColor}
                   onChange={(e) => {
@@ -155,7 +155,7 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
                 />
               </div>
               <Input
-                label="Text Color"
+                label="文字色"
                 type="color"
                 isDisabled={!useCustomTextColor}
                 value={useCustomTextColor ? textColor || "#000000" : "#000000"}
@@ -165,7 +165,7 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
           </div>
           <div className="flex flex-col gap-2 rounded-lg border border-default-200/50 p-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Use gradient</span>
+              <span className="text-sm font-medium">啟用漸層</span>
               <Switch
                 isSelected={useCustomGradient}
                 onChange={(e) => {
@@ -188,14 +188,14 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
                 isDisabled={!useCustomGradient}
-                label="Gradient From"
+                label="漸層起點"
                 type="color"
                 value={gradientFrom}
                 onValueChange={setGradientFrom}
               />
               <Input
                 isDisabled={!useCustomGradient}
-                label="Gradient To"
+                label="漸層終點"
                 type="color"
                 value={gradientTo}
                 onValueChange={setGradientTo}
@@ -207,16 +207,16 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
       {theme === "colorful" ? (
         <div className="flex flex-col gap-2 rounded-lg border border-default-200/50 p-3">
           <p className="text-sm text-default-600">
-            Colorful uses the built-in gradient. Switch to Custom to override.
+            漸層主題使用內建配色，若要自訂請切換到「自訂」。
           </p>
         </div>
       ) : null}
       <div className="flex gap-2 justify-end mt-4">
         <Button color="danger" variant="light" onPress={onCancel}>
-          Cancel
+          取消
         </Button>
         <Button color="primary" type="submit">
-          Save
+          儲存
         </Button>
       </div>
     </form>
