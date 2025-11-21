@@ -51,6 +51,18 @@ export default function Home() {
       countdown.title,
     )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
       countdown.theme
+    }${
+      countdown.backgroundColor
+        ? `&bg=${encodeURIComponent(countdown.backgroundColor)}`
+        : ""
+    }${
+      countdown.textColor ? `&text=${encodeURIComponent(countdown.textColor)}` : ""
+    }${
+      countdown.gradientFrom
+        ? `&gFrom=${encodeURIComponent(countdown.gradientFrom)}`
+        : ""
+    }${
+      countdown.gradientTo ? `&gTo=${encodeURIComponent(countdown.gradientTo)}` : ""
     }`;
     const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden; border-radius:12px; background:transparent;" scrolling="no" allowtransparency="true"></iframe>`;
 
@@ -88,8 +100,8 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-6 mt-8 w-full max-w-4xl px-4">
-            {countdowns.map((countdown) => (
-              <Card key={countdown.id} className="py-4">
+          {countdowns.map((countdown) => (
+            <Card key={countdown.id} className="py-4">
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                   <p className="text-tiny uppercase font-bold">
                     {countdown.title}
@@ -99,13 +111,17 @@ export default function Home() {
                   </small>
                 </CardHeader>
                 <CardBody className="overflow-visible py-2 flex items-center justify-center">
-                  <CountdownWidget
-                    targetDate={countdown.targetDate}
-                    theme={countdown.theme}
-                    title={countdown.title}
-                  />
-                </CardBody>
-                <CardFooter className="flex justify-end gap-2">
+              <CountdownWidget
+                targetDate={countdown.targetDate}
+                theme={countdown.theme}
+                title={countdown.title}
+                backgroundColor={countdown.backgroundColor}
+                textColor={countdown.textColor}
+                gradientFrom={countdown.gradientFrom}
+                gradientTo={countdown.gradientTo}
+              />
+            </CardBody>
+            <CardFooter className="flex justify-end gap-2">
                   <Button
                     size="sm"
                     variant="light"

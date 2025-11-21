@@ -6,13 +6,21 @@ import { cn } from "@heroui/theme";
 interface CountdownWidgetProps {
   targetDate: string;
   title: string;
-  theme?: "light" | "dark" | "colorful";
+  theme?: "light" | "dark" | "colorful" | "custom";
+  backgroundColor?: string;
+  textColor?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
 }
 
 export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
   targetDate,
   title,
   theme = "light",
+  backgroundColor,
+  textColor,
+  gradientFrom,
+  gradientTo,
 }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -43,20 +51,54 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const themeStyles = {
-    light: "bg-white text-black border border-gray-200",
-    dark: "bg-black text-white border border-gray-800",
-    colorful:
-      "bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white shadow-lg shadow-pink-500/25",
-  };
+  // Shared gradient defaults to keep Colorful and Custom consistent
+  const defaultFrom = "#b14bf4";
+  const defaultMid = "#c43ddf";
+  const defaultTo = "#f43f8f";
+
+  const isCustomGradient =
+    theme === "custom" && Boolean(gradientFrom || gradientTo);
+  const isDefaultGradient =
+    theme === "colorful" ||
+    (theme === "custom" && !backgroundColor && !isCustomGradient);
+
+  const fromColor = gradientFrom || defaultFrom;
+  const toColor = gradientTo || defaultTo;
+  const midColor = gradientFrom && gradientTo ? undefined : defaultMid; // keep mid stop when not fully custom
+
+  const gradientBackground = isCustomGradient
+    ? midColor
+      ? `linear-gradient(90deg, ${fromColor} 0%, ${midColor} 50%, ${toColor} 100%)`
+      : `linear-gradient(90deg, ${fromColor} 0%, ${toColor} 100%)`
+    : isDefaultGradient
+      ? `linear-gradient(90deg, ${defaultFrom} 0%, ${defaultMid} 50%, ${defaultTo} 100%)`
+      : undefined;
+
+  const customStyle = {
+    backgroundImage: gradientBackground,
+    backgroundColor:
+      !isCustomGradient && !isDefaultGradient
+        ? backgroundColor || undefined
+        : undefined,
+    color: textColor || undefined,
+    border: backgroundColor || isCustomGradient || isDefaultGradient ? "none" : undefined,
+  } satisfies React.CSSProperties;
+
+  const themeClasses = cn(
+    "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl transition-all",
+    theme === "light" && "bg-white text-black border border-gray-200 shadow-lg",
+    theme === "dark" && "bg-black text-white border border-gray-800 shadow-lg",
+    isDefaultGradient && "text-white shadow-lg",
+    isCustomGradient && "text-white shadow-lg",
+    theme === "custom" &&
+      !isDefaultGradient &&
+      !isCustomGradient &&
+      "bg-white border border-gray-200 shadow-lg",
+    !textColor && (isDefaultGradient || isCustomGradient) && "text-white",
+  );
 
   return (
-    <div
-      className={cn(
-        "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl transition-all",
-        themeStyles[theme],
-      )}
-    >
+    <div className={themeClasses} style={customStyle}>
       <div className="text-xs font-bold tracking-widest uppercase opacity-80 truncate max-w-[80px]">
         {title}
       </div>

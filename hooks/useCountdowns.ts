@@ -4,7 +4,11 @@ export interface Countdown {
   id: string;
   title: string;
   targetDate: string; // ISO string
-  theme: "light" | "dark" | "colorful";
+  theme: "light" | "dark" | "colorful" | "custom";
+  backgroundColor?: string;
+  textColor?: string;
+  gradientFrom?: string;
+  gradientTo?: string;
 }
 
 const STORAGE_KEY = "gen_countdowns";

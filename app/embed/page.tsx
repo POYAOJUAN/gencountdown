@@ -10,10 +10,23 @@ function EmbedContent() {
   const title = searchParams.get("title") || "Countdown";
   const targetDate = searchParams.get("date") || new Date().toISOString();
   const theme =
-    (searchParams.get("theme") as "light" | "dark" | "colorful") || "light";
+    (searchParams.get("theme") as "light" | "dark" | "colorful" | "custom") ||
+    "light";
+  const backgroundColor = searchParams.get("bg") || undefined;
+  const textColor = searchParams.get("text") || undefined;
+  const gradientFrom = searchParams.get("gFrom") || undefined;
+  const gradientTo = searchParams.get("gTo") || undefined;
 
   return (
-    <CountdownWidget targetDate={targetDate} theme={theme} title={title} />
+    <CountdownWidget
+      backgroundColor={backgroundColor}
+      gradientFrom={gradientFrom}
+      gradientTo={gradientTo}
+      targetDate={targetDate}
+      textColor={textColor}
+      theme={theme}
+      title={title}
+    />
   );
 }
 
