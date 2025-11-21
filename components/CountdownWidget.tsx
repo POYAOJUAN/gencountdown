@@ -44,16 +44,18 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
   }, [targetDate]);
 
   const themeStyles = {
-    light: "bg-white text-black border-gray-200",
-    dark: "bg-black text-white border-gray-800",
+    light:
+      "bg-white text-black border border-gray-200 shadow-sm shadow-black/10",
+    dark:
+      "bg-black text-white border border-transparent shadow-md shadow-black/25",
     colorful:
-      "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent",
+      "bg-gradient-to-r from-purple-500 to-pink-500 text-white border border-transparent shadow-md shadow-pink-500/25",
   };
 
   return (
     <div
       className={cn(
-        "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl border shadow-sm transition-all",
+        "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl transition-all",
         themeStyles[theme],
       )}
     >

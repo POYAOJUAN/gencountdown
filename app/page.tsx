@@ -52,7 +52,7 @@ export default function Home() {
     )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
       countdown.theme
     }`;
-    const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden; border-radius:9999px; background:transparent;" scrolling="no" allowtransparency="true"></iframe>`;
+    const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden; border-radius:12px; background:transparent;" scrolling="no" allowtransparency="true"></iframe>`;
 
     setExportCode(iframeCode);
     setEditingCountdown(null); // Clear editing state if any
