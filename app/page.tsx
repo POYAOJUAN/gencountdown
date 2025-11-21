@@ -98,7 +98,7 @@ export default function Home() {
               <span>一鍵複製嵌入代碼，立即嵌入 Teachify 方案簡介。</span>
               <br />
               <span>
-                倒數資料僅存於瀏覽器 localStorage，匯出後可隨時刪除，不影響已嵌入的倒數計時器。
+                資料僅存於你的瀏覽器本地，不會上傳伺服器。匯出後可隨時刪除，不影響已嵌入的倒數計時器。
               </span>
             </p>
             <Button color="primary" onPress={handleCreate}>
