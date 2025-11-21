@@ -47,7 +47,7 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
     light: "bg-white text-black border border-gray-200",
     dark: "bg-black text-white border border-gray-800",
     colorful:
-      "bg-gradient-to-r from-purple-500 to-pink-500 text-white border border-transparent",
+      "bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white shadow-lg shadow-pink-500/25",
   };
 
   return (
