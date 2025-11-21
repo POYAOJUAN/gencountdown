@@ -13,7 +13,7 @@ export const siteConfig = {
       href: "/contact",
     },
   ],
-  navMenuItems: [],
+  navMenuItems: [] as Array<{ label: string; href: string }>,
   links: {
     github: "https://github.com/poyaojuan/gencountdown",
     docs: "https://poyaojuan.github.io/gencountdown",
