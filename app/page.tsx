@@ -15,7 +15,7 @@ import { Snippet } from "@heroui/snippet";
 import { useCountdowns, Countdown } from "@/hooks/useCountdowns";
 import { CountdownForm } from "@/components/CountdownForm";
 import { CountdownWidget } from "@/components/CountdownWidget";
-import { ThemeSwitch } from "@/components/theme-switch";
+import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   const {
@@ -88,11 +88,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
       <main className="container mx-auto max-w-7xl px-6 pt-16">
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-          <div className="absolute top-4 right-4">
-            <ThemeSwitch />
-          </div>
           <div className="inline-block max-w-xl text-center justify-center">
             <h1 className="text-4xl font-bold mb-4">倒數計時產生器</h1>
             <p className="text-lg text-default-600 mb-8 space-y-2">
