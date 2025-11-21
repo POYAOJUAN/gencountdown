@@ -56,13 +56,17 @@ export default function Home() {
         ? `&bg=${encodeURIComponent(countdown.backgroundColor)}`
         : ""
     }${
-      countdown.textColor ? `&text=${encodeURIComponent(countdown.textColor)}` : ""
+      countdown.textColor
+        ? `&text=${encodeURIComponent(countdown.textColor)}`
+        : ""
     }${
       countdown.gradientFrom
         ? `&gFrom=${encodeURIComponent(countdown.gradientFrom)}`
         : ""
     }${
-      countdown.gradientTo ? `&gTo=${encodeURIComponent(countdown.gradientTo)}` : ""
+      countdown.gradientTo
+        ? `&gTo=${encodeURIComponent(countdown.gradientTo)}`
+        : ""
     }`;
     const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden; border-radius:12px; background:transparent;" scrolling="no" allowtransparency="true"></iframe>`;
 
@@ -90,38 +94,43 @@ export default function Home() {
             <ThemeSwitch />
           </div>
           <div className="inline-block max-w-xl text-center justify-center">
-          <h1 className="text-4xl font-bold mb-4">倒數計時產生器</h1>
-          <p className="text-lg text-default-600 mb-8">
-            建立適合嵌入網站的水平倒數小工具。
-          </p>
-          <Button color="primary" onPress={handleCreate}>
-            建立新的倒數
-          </Button>
-        </div>
+            <h1 className="text-4xl font-bold mb-4">倒數計時產生器</h1>
+            <p className="text-lg text-default-600 mb-8 space-y-2">
+              <br />
+              <span>一鍵複製，立即嵌入 Teachify 方案簡介。</span>
+              <br />
+              <span>
+                設定完成後可即時刪除資料，不影響已嵌入 Teachify 的呈現。
+              </span>
+            </p>
+            <Button color="primary" onPress={handleCreate}>
+              建立新的倒數
+            </Button>
+          </div>
 
           <div className="flex flex-col gap-6 mt-8 w-full max-w-4xl px-4">
-          {countdowns.map((countdown) => (
-            <Card key={countdown.id} className="py-4">
-              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                <p className="text-tiny uppercase font-bold">
-                  {countdown.title}
-                </p>
-                <small className="text-default-500">
-                  {new Date(countdown.targetDate).toLocaleDateString()}
-                </small>
-              </CardHeader>
-              <CardBody className="overflow-visible py-2 flex items-center justify-center">
-                <CountdownWidget
-                  targetDate={countdown.targetDate}
-                  theme={countdown.theme}
-                  title={countdown.widgetTitle || countdown.title}
-                  backgroundColor={countdown.backgroundColor}
-                  textColor={countdown.textColor}
-                  gradientFrom={countdown.gradientFrom}
-                  gradientTo={countdown.gradientTo}
-                />
-            </CardBody>
-            <CardFooter className="flex justify-end gap-2">
+            {countdowns.map((countdown) => (
+              <Card key={countdown.id} className="py-4">
+                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                  <p className="text-tiny uppercase font-bold">
+                    {countdown.title}
+                  </p>
+                  <small className="text-default-500">
+                    {new Date(countdown.targetDate).toLocaleDateString()}
+                  </small>
+                </CardHeader>
+                <CardBody className="overflow-visible py-2 flex items-center justify-center">
+                  <CountdownWidget
+                    backgroundColor={countdown.backgroundColor}
+                    gradientFrom={countdown.gradientFrom}
+                    gradientTo={countdown.gradientTo}
+                    targetDate={countdown.targetDate}
+                    textColor={countdown.textColor}
+                    theme={countdown.theme}
+                    title={countdown.widgetTitle || countdown.title}
+                  />
+                </CardBody>
+                <CardFooter className="flex justify-end gap-2">
                   <Button
                     size="sm"
                     variant="light"
