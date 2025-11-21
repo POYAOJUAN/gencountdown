@@ -15,6 +15,7 @@ import { Snippet } from "@heroui/snippet";
 import { useCountdowns, Countdown } from "@/hooks/useCountdowns";
 import { CountdownForm } from "@/components/CountdownForm";
 import { CountdownWidget } from "@/components/CountdownWidget";
+import { ThemeSwitch } from "@/components/theme-switch";
 
 export default function Home() {
   const {
@@ -46,9 +47,8 @@ export default function Home() {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const url = `${origin}/embed?title=${encodeURIComponent(
       countdown.title,
-    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
-      countdown.theme
-    }`;
+    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${countdown.theme
+      }`;
     const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden;" scrolling="no"></iframe>`;
 
     setExportCode(iframeCode);
@@ -69,6 +69,9 @@ export default function Home() {
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="absolute top-4 right-4">
+        <ThemeSwitch />
+      </div>
       <div className="inline-block max-w-xl text-center justify-center">
         <h1 className="text-4xl font-bold mb-4">Countdown Generator</h1>
         <p className="text-lg text-default-600 mb-8">
