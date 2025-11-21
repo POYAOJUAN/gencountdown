@@ -53,7 +53,7 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
   return (
     <div
       className={cn(
-        "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-full border shadow-sm transition-all",
+        "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl border shadow-sm transition-all",
         themeStyles[theme],
       )}
     >
