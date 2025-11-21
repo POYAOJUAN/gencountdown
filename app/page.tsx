@@ -95,10 +95,10 @@ export default function Home() {
             <h1 className="text-4xl font-bold mb-4">倒數計時產生器</h1>
             <p className="text-lg text-default-600 mb-8 space-y-2">
               <br />
-              <span>一鍵複製，立即嵌入 Teachify 方案簡介。</span>
+              <span>一鍵複製嵌入代碼，立即嵌入 Teachify 方案簡介。</span>
               <br />
               <span>
-                設定完成後可即時刪除資料，不影響已嵌入 Teachify 的呈現。
+                倒數資料僅存於瀏覽器 localStorage，匯出後可隨時刪除，不影響已嵌入的倒數計時器。
               </span>
             </p>
             <Button color="primary" onPress={handleCreate}>
