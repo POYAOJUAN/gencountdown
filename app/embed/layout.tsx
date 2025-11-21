@@ -1,9 +1,4 @@
 import "@/styles/globals.css";
-import clsx from "clsx";
-
-import { Providers } from "../providers";
-
-import { fontSans } from "@/config/fonts";
 
 export default function EmbedLayout({
   children,
@@ -11,19 +6,10 @@ export default function EmbedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en">
       <head />
-      <body
-        className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased",
-          fontSans.variable,
-        )}
-      >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <main className="w-full h-screen flex items-center justify-center">
-            {children}
-          </main>
-        </Providers>
+      <body className="m-0 p-0 bg-transparent">
+        <main className="w-[293px] h-[50px] m-0 p-0">{children}</main>
       </body>
     </html>
   );

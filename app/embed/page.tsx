@@ -13,9 +13,7 @@ function EmbedContent() {
     (searchParams.get("theme") as "light" | "dark" | "colorful") || "light";
 
   return (
-    <div className="w-[293px] h-[50px] overflow-hidden">
-      <CountdownWidget targetDate={targetDate} theme={theme} title={title} />
-    </div>
+    <CountdownWidget targetDate={targetDate} theme={theme} title={title} />
   );
 }
 
