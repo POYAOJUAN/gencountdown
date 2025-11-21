@@ -20,6 +20,7 @@ export function useCountdowns() {
       try {
         setCountdowns(JSON.parse(saved));
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error("Failed to parse countdowns", e);
       }
     }

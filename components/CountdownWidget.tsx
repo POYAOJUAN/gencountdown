@@ -46,14 +46,15 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
   const themeStyles = {
     light: "bg-white text-black border-gray-200",
     dark: "bg-black text-white border-gray-800",
-    colorful: "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent",
+    colorful:
+      "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent",
   };
 
   return (
     <div
       className={cn(
         "w-[293px] h-[50px] flex flex-row items-center justify-between px-4 overflow-hidden rounded-xl border shadow-sm transition-all",
-        themeStyles[theme]
+        themeStyles[theme],
       )}
     >
       <div className="text-xs font-bold tracking-widest uppercase opacity-80 truncate max-w-[80px]">
@@ -61,13 +62,13 @@ export const CountdownWidget: React.FC<CountdownWidgetProps> = ({
       </div>
 
       <div className="flex gap-2 items-center justify-center flex-1">
-        <TimeUnit value={timeLeft.days} label="天" />
+        <TimeUnit label="天" value={timeLeft.days} />
         <span className="text-xs font-bold opacity-40">:</span>
-        <TimeUnit value={timeLeft.hours} label="時" />
+        <TimeUnit label="時" value={timeLeft.hours} />
         <span className="text-xs font-bold opacity-40">:</span>
-        <TimeUnit value={timeLeft.minutes} label="分" />
+        <TimeUnit label="分" value={timeLeft.minutes} />
         <span className="text-xs font-bold opacity-40">:</span>
-        <TimeUnit value={timeLeft.seconds} label="秒" />
+        <TimeUnit label="秒" value={timeLeft.seconds} />
       </div>
     </div>
   );

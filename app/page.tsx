@@ -11,16 +11,22 @@ import {
   useDisclosure,
 } from "@heroui/modal";
 import { Snippet } from "@heroui/snippet";
+
 import { useCountdowns, Countdown } from "@/hooks/useCountdowns";
 import { CountdownForm } from "@/components/CountdownForm";
 import { CountdownWidget } from "@/components/CountdownWidget";
 
 export default function Home() {
-  const { countdowns, isLoaded, addCountdown, updateCountdown, deleteCountdown } =
-    useCountdowns();
+  const {
+    countdowns,
+    isLoaded,
+    addCountdown,
+    updateCountdown,
+    deleteCountdown,
+  } = useCountdowns();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [editingCountdown, setEditingCountdown] = useState<Countdown | null>(
-    null
+    null,
   );
   const [exportCode, setExportCode] = useState<string | null>(null);
 
@@ -39,10 +45,12 @@ export default function Home() {
   const handleExport = (countdown: Countdown) => {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const url = `${origin}/embed?title=${encodeURIComponent(
-      countdown.title
-    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${countdown.theme
-      }`;
+      countdown.title,
+    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
+      countdown.theme
+    }`;
     const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden;" scrolling="no"></iframe>`;
+
     setExportCode(iframeCode);
     setEditingCountdown(null); // Clear editing state if any
     onOpen(); // Reuse modal for export
@@ -82,9 +90,9 @@ export default function Home() {
             </CardHeader>
             <CardBody className="overflow-visible py-2 flex items-center justify-center">
               <CountdownWidget
-                title={countdown.title}
                 targetDate={countdown.targetDate}
                 theme={countdown.theme}
+                title={countdown.title}
               />
             </CardBody>
             <CardFooter className="flex justify-end gap-2">
@@ -96,16 +104,16 @@ export default function Home() {
                 Edit
               </Button>
               <Button
-                size="sm"
                 color="danger"
+                size="sm"
                 variant="light"
                 onPress={() => deleteCountdown(countdown.id)}
               >
                 Delete
               </Button>
               <Button
-                size="sm"
                 color="secondary"
+                size="sm"
                 variant="flat"
                 onPress={() => handleExport(countdown)}
               >
@@ -116,7 +124,7 @@ export default function Home() {
         ))}
       </div>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="2xl">
+      <Modal isOpen={isOpen} size="2xl" onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -132,12 +140,12 @@ export default function Home() {
                   <div className="flex flex-col gap-4">
                     <p>Copy this code to embed the countdown on your site:</p>
                     <Snippet
-                      symbol=""
-                      variant="bordered"
                       className="w-full"
                       classNames={{
                         pre: "whitespace-pre-wrap break-all font-mono text-xs",
                       }}
+                      symbol=""
+                      variant="bordered"
                     >
                       {exportCode}
                     </Snippet>
@@ -145,8 +153,8 @@ export default function Home() {
                 ) : (
                   <CountdownForm
                     initialData={editingCountdown || undefined}
-                    onSubmit={handleSubmit}
                     onCancel={onClose}
+                    onSubmit={handleSubmit}
                   />
                 )}
               </ModalBody>

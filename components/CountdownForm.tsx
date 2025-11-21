@@ -22,8 +22,10 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
   const [targetDate, setTargetDate] = useState(() => {
     if (initialData?.targetDate) return initialData.targetDate;
     const date = new Date();
+
     date.setDate(date.getDate() + 1); // Default to tomorrow
     date.setMinutes(date.getMinutes() - date.getTimezoneOffset()); // Adjust to local timezone
+
     return date.toISOString().slice(0, 16);
   });
   const [theme, setTheme] = useState<Countdown["theme"]>(
@@ -60,15 +62,9 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
         selectedKeys={[theme]}
         onChange={(e) => setTheme(e.target.value as Countdown["theme"])}
       >
-        <SelectItem key="light">
-          Light
-        </SelectItem>
-        <SelectItem key="dark">
-          Dark
-        </SelectItem>
-        <SelectItem key="colorful">
-          Colorful
-        </SelectItem>
+        <SelectItem key="light">Light</SelectItem>
+        <SelectItem key="dark">Dark</SelectItem>
+        <SelectItem key="colorful">Colorful</SelectItem>
       </Select>
       <div className="flex gap-2 justify-end mt-4">
         <Button color="danger" variant="light" onPress={onCancel}>
