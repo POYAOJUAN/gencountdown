@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export interface Countdown {
   id: string;
   title: string;
+  widgetTitle?: string;
   targetDate: string; // ISO string
   theme: "light" | "dark" | "colorful" | "custom";
   backgroundColor?: string;

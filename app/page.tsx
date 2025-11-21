@@ -48,7 +48,7 @@ export default function Home() {
       process.env.NEXT_PUBLIC_APP_URL ||
       (typeof window !== "undefined" ? window.location.origin : "");
     const url = `${appUrl}/embed?title=${encodeURIComponent(
-      countdown.title,
+      countdown.widgetTitle || countdown.title,
     )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
       countdown.theme
     }${
@@ -102,24 +102,24 @@ export default function Home() {
           <div className="flex flex-col gap-6 mt-8 w-full max-w-4xl px-4">
           {countdowns.map((countdown) => (
             <Card key={countdown.id} className="py-4">
-                <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                  <p className="text-tiny uppercase font-bold">
-                    {countdown.title}
-                  </p>
-                  <small className="text-default-500">
-                    {new Date(countdown.targetDate).toLocaleDateString()}
-                  </small>
-                </CardHeader>
-                <CardBody className="overflow-visible py-2 flex items-center justify-center">
-              <CountdownWidget
-                targetDate={countdown.targetDate}
-                theme={countdown.theme}
-                title={countdown.title}
-                backgroundColor={countdown.backgroundColor}
-                textColor={countdown.textColor}
-                gradientFrom={countdown.gradientFrom}
-                gradientTo={countdown.gradientTo}
-              />
+              <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+                <p className="text-tiny uppercase font-bold">
+                  {countdown.title}
+                </p>
+                <small className="text-default-500">
+                  {new Date(countdown.targetDate).toLocaleDateString()}
+                </small>
+              </CardHeader>
+              <CardBody className="overflow-visible py-2 flex items-center justify-center">
+                <CountdownWidget
+                  targetDate={countdown.targetDate}
+                  theme={countdown.theme}
+                  title={countdown.widgetTitle || countdown.title}
+                  backgroundColor={countdown.backgroundColor}
+                  textColor={countdown.textColor}
+                  gradientFrom={countdown.gradientFrom}
+                  gradientTo={countdown.gradientTo}
+                />
             </CardBody>
             <CardFooter className="flex justify-end gap-2">
                   <Button

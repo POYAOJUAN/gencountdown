@@ -20,6 +20,9 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
   onCancel,
 }) => {
   const [title, setTitle] = useState(initialData?.title || "");
+  const [widgetTitle, setWidgetTitle] = useState(
+    initialData?.widgetTitle || initialData?.title || "",
+  );
   const [targetDate, setTargetDate] = useState(() => {
     if (initialData?.targetDate) return initialData.targetDate;
     const date = new Date();
@@ -61,6 +64,7 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
       isCustomTheme && useCustomTextColor ? textColor.trim() : "";
     onSubmit({
       title,
+      widgetTitle: widgetTitle.trim() || title.trim(),
       targetDate,
       theme,
       backgroundColor: cleanBackground || undefined,
@@ -74,10 +78,16 @@ export const CountdownForm: React.FC<CountdownFormProps> = ({
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input
         isRequired
-        label="Title"
-        placeholder="Enter countdown title"
+        label="Card Title"
+        placeholder="Shown on card header"
         value={title}
         onValueChange={setTitle}
+      />
+      <Input
+        label="Widget Title (inside countdown)"
+        placeholder="Shown inside the countdown pill"
+        value={widgetTitle}
+        onValueChange={setWidgetTitle}
       />
       <Input
         isRequired
