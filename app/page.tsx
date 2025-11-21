@@ -47,8 +47,9 @@ export default function Home() {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const url = `${origin}/embed?title=${encodeURIComponent(
       countdown.title,
-    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${countdown.theme
-      }`;
+    )}&date=${encodeURIComponent(countdown.targetDate)}&theme=${
+      countdown.theme
+    }`;
     const iframeCode = `<iframe src="${url}" width="293" height="50" style="border:none; overflow:hidden;" scrolling="no"></iframe>`;
 
     setExportCode(iframeCode);
