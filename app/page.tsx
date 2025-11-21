@@ -161,7 +161,7 @@ export default function Home() {
                         ? "Edit Countdown"
                         : "New Countdown"}
                   </ModalHeader>
-                  <ModalBody>
+                  <ModalBody className="max-h-[70vh] overflow-y-auto">
                     {exportCode ? (
                       <div className="flex flex-col gap-4">
                         <p>
