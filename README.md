@@ -116,21 +116,22 @@ pnpm start
   height="50"
   style="border:none; overflow:hidden; border-radius:12px; background:transparent;"
   scrolling="no"
-  allowtransparency="true">
+  allowtransparency="true"
+>
 </iframe>
 ```
 
 ### URL 參數說明
 
-| 參數 | 必填 | 說明 | 範例 |
-|------|------|------|------|
-| `title` | ✅ | 小工具顯示標題 | `新年倒數` |
-| `date` | ✅ | 目標日期（ISO 8601） | `2025-12-31T23:59:59` |
-| `theme` | ✅ | 主題 | `light` / `dark` / `colorful` |
-| `bg` | ❌ | 自定義背景顏色 | `%23000000` (HEX 編碼) |
-| `text` | ❌ | 自定義文字顏色 | `%23ffffff` |
-| `gFrom` | ❌ | 漸層起始色 | `%23ff0000` |
-| `gTo` | ❌ | 漸層結束色 | `%2300ff00` |
+| 參數    | 必填 | 說明                 | 範例                          |
+| ------- | ---- | -------------------- | ----------------------------- |
+| `title` | ✅   | 小工具顯示標題       | `新年倒數`                    |
+| `date`  | ✅   | 目標日期（ISO 8601） | `2025-12-31T23:59:59`         |
+| `theme` | ✅   | 主題                 | `light` / `dark` / `colorful` |
+| `bg`    | ❌   | 自定義背景顏色       | `%23000000` (HEX 編碼)        |
+| `text`  | ❌   | 自定義文字顏色       | `%23ffffff`                   |
+| `gFrom` | ❌   | 漸層起始色           | `%23ff0000`                   |
+| `gTo`   | ❌   | 漸層結束色           | `%2300ff00`                   |
 
 ## 🛠️ 技術棧
 
@@ -177,14 +178,14 @@ gencountdown/
 ```typescript
 interface Countdown {
   id: string;
-  title: string;              // 管理用標題
-  widgetTitle?: string;        // 小工具顯示標題
-  targetDate: string;          // ISO 8601 格式
-  theme: 'light' | 'dark' | 'colorful';
-  backgroundColor?: string;    // 自定義背景色
-  textColor?: string;          // 自定義文字色
-  gradientFrom?: string;       // 漸層起始色
-  gradientTo?: string;         // 漸層結束色
+  title: string; // 管理用標題
+  widgetTitle?: string; // 小工具顯示標題
+  targetDate: string; // ISO 8601 格式
+  theme: "light" | "dark" | "colorful";
+  backgroundColor?: string; // 自定義背景色
+  textColor?: string; // 自定義文字色
+  gradientFrom?: string; // 漸層起始色
+  gradientTo?: string; // 漸層結束色
 }
 ```
 
@@ -195,10 +196,45 @@ interface Countdown {
 3. Embed 頁面讀取 URL 參數並渲染倒數計時器
 4. **無需資料庫**：所有資料透過 URL 傳遞，刪除 localStorage 不影響已嵌入的小工具
 
+## 🎬 Demo
+
+線上展示：[https://gencountdown.vercel.app](https://gencountdown.vercel.app)
+
+## 🚀 部署
+
+### Vercel（推薦）
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/POYAOJUAN/gencountdown)
+
+1. 點擊上方按鈕部署到 Vercel
+2. 設定環境變數 `NEXT_PUBLIC_APP_URL` 為你的 Vercel 分配網域或自訂網域
+3. 完成部署
+
+### 其他平台
+
+支援任何支援 Next.js 的平台：
+
+- Netlify
+- Cloudflare Pages
+- Railway
+- 等等...
+
 ## 📝 License
 
 Licensed under the [MIT license](https://github.com/POYAOJUAN/gencountdown/blob/main/LICENSE).
 
 ## 👤 作者
 
-[POYAOJUAN](https://github.com/POYAOJUAN)
+**POYAOJUAN**
+
+- GitHub: [@POYAOJUAN](https://github.com/POYAOJUAN)
+
+本專案為作者使用 **Vibe Coding** 開發，歡迎貢獻。
+
+---
+
+<div align="center">
+
+**Made with ♥ and Vibe Coding**
+
+</div>
